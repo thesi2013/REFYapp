@@ -1,12 +1,13 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
-import {MatPaginator, MatSnackBar, MatSort, MatTableDataSource} from '@angular/material';
+import {MatPaginator, MatSnackBar, MatSort, MatTableDataSource, PageEvent} from '@angular/material';
 import {Box} from '../../models/Box';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Options} from '../../models/Options';
 import * as papa from 'papaparse';
 import {Warehouse} from '../../models/Warehouse';
 import {forEach} from '@angular/router/src/utils/collection';
+import {Search} from '../../models/Search';
 
 
 @Component({
@@ -21,16 +22,17 @@ export class BoxListComponent implements OnInit, AfterViewInit {
   sizeOptions = Options.sizeOptions;
 
   length: number;
-  pageSize: number = 10;
+  pageSize = 10;
   pageSizeOptions: number[] = [5, 10, 25, 100];
   warehouses: Warehouse[];
   rows: string[] = [];
   columns: string[] = [];
+  pageEvent: PageEvent;
 
   box: Box = new Box();
   columnSelection: string;
   rowSelection: string;
-  search = {};
+  search: Search = new Search();
 
   displayedColumns: string[] = ['id', 'warehouse', 'location', 'weather', 'categories', 'items', 'sizes', 'delete'];
 
@@ -116,12 +118,12 @@ export class BoxListComponent implements OnInit, AfterViewInit {
     element.setAttribute(
       'href',
       'data:text/plain;charset=utf-8,'
-        + encodeURIComponent(
-          papa.unparse(
-            this.dataSource.filteredData,
-            papaparseUnparseConfig
-          )
-        )
+      + encodeURIComponent(
+      papa.unparse(
+        this.dataSource.filteredData,
+        papaparseUnparseConfig
+      )
+      )
     );
     element.setAttribute('download', 'refyWMS-export-TABSEPERATED.csv');
 
@@ -138,7 +140,7 @@ export class BoxListComponent implements OnInit, AfterViewInit {
       console.log(search);
       console.log(object);
       search.forEach((string, index) => {
-        if(string !== '' && result === true){
+        if (string !== '' && result === true) {
           result = object.includes(string);
           console.log(string);
           console.log(result);
