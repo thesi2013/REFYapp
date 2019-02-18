@@ -1,0 +1,16 @@
+.refy-flex-row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.refy-flex-grow{
+  flex-grow: 1;
+  margin-right: 16px;
+}
+
+.refy-floating-button{
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 1;
+}

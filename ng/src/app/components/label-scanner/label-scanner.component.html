@@ -1,0 +1,19 @@
+<div>
+  <div *ngIf="!imageChosen">
+      <webcam
+        #webcam
+        [width]="webcamSize"
+        [height]="webcamSize"
+        [videoOptions]="constraints"
+        [trigger]="triggerObservable"
+        [switchCamera]="cameraIdObservable"
+        [allowCameraSwitch]="false"
+        (imageClick)="takePicture()"
+        (imageCapture)="handlePicture($event)"
+        (cameraSwitched)="switchCamera($event)"
+      ></webcam>
+  </div>
+  <div style="max-width: 100vw">
+    <canvas style="visibility: hidden; overflow: hidden" #canvas></canvas>
+  </div>
+</div>

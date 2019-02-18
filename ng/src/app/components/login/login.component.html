@@ -1,0 +1,25 @@
+<div class="refy-container">
+  <form class="form-group">
+    <div class="form-group">
+      <mat-form-field>
+        <label>Email address</label>
+        <input matInput
+               type="email" id="email" class="form-control" required
+               [(ngModel)]="email" name="email"
+        >
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field>
+        <label>Password</label>
+        <input matInput
+               type="password" id="password" class="form-control" required
+               [(ngModel)]="password" name="password"
+        >
+      </mat-form-field>
+
+    </div>
+    <button mat-raised-button color="primary" type="submit" (click)="tryLogin()" class="btn btn-default">Login</button>
+  </form>
+  <button mat-raised-button (click)="tryLogout()">Logout</button>
+</div>

@@ -1,0 +1,105 @@
+<div>
+  <mat-progress-bar *ngIf="!box" mode="query"></mat-progress-bar>
+  <div *ngIf="!labelScannerActive">
+    <div *ngIf="box" class="refy-container">
+      <div>
+        <span>SSCC: {{box.id}}</span>
+      </div>
+
+      <div fxLayout="column" fxLayoutGap="16px" fxLayoutAlign="center">
+        <div>
+          <mat-button-toggle-group multiple [(ngModel)]="box.weather" class="refy-multi-line-button-group">
+            <mat-button-toggle *ngFor="let weather of weatherOptions" [value]="weather.id">
+              <mat-icon class="{{weather.iconClass}}"></mat-icon>
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+
+        <div>
+          <mat-button-toggle-group multiple [(ngModel)]="box.categories" class="refy-multi-line-button-group">
+            <mat-button-toggle *ngFor="let category of categoryOptions" [value]="category.id">
+              <mat-icon class="{{category.iconClass}}"></mat-icon>
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+
+        <div>
+          <mat-button-toggle-group multiple [(ngModel)]="box.items" class="refy-multi-line-button-group">
+            <mat-button-toggle *ngFor="let item of itemOptions" [value]="item.id">
+              <mat-icon class="{{item.iconClass}}"></mat-icon>
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+      </div>
+
+      <div>
+        <mat-form-field class="refy-input-width-full">
+          <mat-select placeholder="Size" multiple [(ngModel)]="box.sizes">
+            <mat-option *ngFor="let size of sizeOptions" [value]="size.id">
+              {{size.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div *ngIf="custom">
+        <mat-form-field class="refy-input-width-full">
+          <input matInput type="text" placeholder="Custom" [formControl]="customFormControl" [(ngModel)]="box.custom">
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row" fxLayoutGap="16px">
+        <mat-form-field class="refy-input-width-half">
+          <input matInput type="number" placeholder="Weight" [(ngModel)]="box.weight">
+          <span matSuffix class="refy-input-suffix">in kg</span>
+        </mat-form-field>
+        <mat-form-field class="refy-input-width-half">
+          <input matInput type="number" placeholder="Amount" [(ngModel)]="box.amount">
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field class="refy-input-width-full">
+          <mat-select placeholder="Warehouse" [(ngModel)]="box.warehouse">
+            <mat-option *ngFor="let warehouse of warehouses" [value]="warehouse.name">
+              {{warehouse.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field class="refy-location">
+          <mat-select placeholder="Column" [(ngModel)]="column">
+            <mat-option *ngFor="let column of columns" [value]="column">
+              {{column}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="refy-location">
+          <mat-select placeholder="Row" [(ngModel)]="row">
+            <mat-option *ngFor="let row of rows" [value]="row">
+              {{row}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="column" fxLayoutGap="16px" fxLayoutAlign="center">
+        <button mat-raised-button [disabled]="!changes" (click)="save()" color="primary">
+          Save
+        </button>
+        <button mat-raised-button [disabled]="changes" (click)="scanLabel()" color="secondary">
+          Quick Scan from Image
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div *ngIf="labelScannerActive">
+    <app-label-scanner [box]=box (labelScanned)="labelScanned($event)"></app-label-scanner>
+  </div>
+
+</div>

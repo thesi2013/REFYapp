@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53 (72520) - https://sketchapp.com -->
+    <title>pants_short</title>
+    <desc>Created with Sketch.</desc>
+    <g id="pants_short" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(4.000000, 4.000000)" fill="#000105">
+            <path d="M1.00179767,3.2443273 L39,3.2443273 L39,0 L1.00179767,0 L1.00179767,3.2443273 Z M39,19 L39,5.17350447 L33.6726116,5.17350447 C33.4425101,8.1008022 34.7988504,14.8995187 39,19 L39,19 Z M1.00179767,18.977355 C5.18497055,14.8733899 6.53501904,8.09470548 6.3031199,5.17350447 L1,5.17350447 L1,18.977355 L1.00179767,18.977355 Z" id="Shape"></path>
+            <path d="M17.6182387,41 L20,24.9293605 L22.3817613,41 L40,41 L38.8985248,21.6459758 C33.6495306,16.9476967 31.4483684,7.80363718 31.6182387,5 L8.35762181,5 C8.52749218,7.7982265 6.32990612,16.9206433 1.10147519,21.6225295 L0,41 L17.6182387,41 Z" id="Path"></path>
+        </g>
+    </g>
+</svg>

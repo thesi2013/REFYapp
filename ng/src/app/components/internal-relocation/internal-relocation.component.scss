@@ -1,0 +1,28 @@
+.refy-location-container {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.refy-warehouse {
+  width: 100%;
+}
+
+.refy-location {
+  width: 50%;
+}
+
+.refy-flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-bottom: 16px;
+}
+
+.refy-flex-start {
+  align-self: flex-start;
+  flex-grow: 1;
+}
+
+.refy-flex-end {
+  align-self: flex-end;
+}

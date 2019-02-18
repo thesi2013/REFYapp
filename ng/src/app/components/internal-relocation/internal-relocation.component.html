@@ -1,0 +1,53 @@
+<div>
+  <div>
+    <app-ssccscanner *ngIf="scanning" (scannedSscc)="newSscc($event)"></app-ssccscanner>
+    <div *ngIf="atLeastOneMarked" class="refy-location-container">
+      <div *ngIf="!scanning">
+        <div>
+          <mat-form-field class="refy-warehouse">
+            <mat-select placeholder="Destination" [(ngModel)]="selectedDestination">
+              <mat-option *ngFor="let warehouse of warehouses" [value]="warehouse">
+                {{warehouse.name}} - {{warehouse.description}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="refy-location">
+            <mat-select placeholder="Column" [(ngModel)]="column">
+              <mat-option *ngFor="let column of columns" [value]="column">
+                {{column}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="refy-location">
+            <mat-select placeholder="Row" [(ngModel)]="row">
+              <mat-option *ngFor="let row of rows" [value]="row">
+                {{row}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="refy-flex-row">
+        <div class="refy-flex-start" *ngIf="scanning">
+          <button mat-raised-button (click)="stopScanning()" color="secondary">Cancel Scanning</button>
+        </div>
+        <div class="refy-flex-start" *ngIf="!scanning">
+          <button mat-raised-button (click)="scanMore()" color="secondary">Scan More Boxes</button>
+        </div>
+        <div class="refy-flex-end" *ngIf="!scanning">
+          <button mat-raised-button (click)="moveBoxes()" color="primary">Move Boxes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <mat-list>
+      <mat-divider></mat-divider>
+      <mat-list-item *ngFor="let box of marked">
+        {{box.id}}
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>

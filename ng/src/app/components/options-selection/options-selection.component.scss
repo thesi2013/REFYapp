@@ -1,0 +1,33 @@
+.refy-multi-line-button-group {
+  border: none;
+  flex-wrap: wrap;
+  border-radius: 0;
+  overflow: visible;
+  width: 100%;
+  .mat-button-toggle{
+    border-radius: 0;
+    border: solid 1px rgba(0,0,0,.12);
+    width: calc(100% / 5);
+    box-sizing: border-box;
+  }
+  mat-icon{
+    font-size: 2.2em;
+  }
+}
+
+.refy-input-suffix{
+  color: rgba(0, 0, 0, .4);
+}
+
+.refy-input-width-half{
+  width: calc(50% - 8px);
+}
+
+.refy-input-width-full{
+  width: 100%;
+}
+
+.refy-location{
+  width: 50%;
+}
+

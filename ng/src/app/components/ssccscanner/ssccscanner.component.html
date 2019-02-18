@@ -1,0 +1,14 @@
+<div>
+  <div class="refy-sscc-scanner-container">
+    <zxing-scanner
+      #scanner
+      start="true"
+      [device]="selectedDevice"
+      [scannerEnabled]="scannerEnabled"
+      (scanSuccess)="handleQrCodeScanResult($event)"
+    ></zxing-scanner>
+  </div>
+  <mat-form-field class="refy-sscc-scanner-manual">
+    <input matInput type="number" placeholder="Manual Input" #manualInput (input)="handleQrCodeInputResult(manualInput.value)">
+  </mat-form-field>
+</div>
