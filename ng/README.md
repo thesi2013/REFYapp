@@ -16,7 +16,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Build for cordova
 
-Run `npm run cordova` to build into the cordova/www folder. Use the --prod flag for production.
+Run `npm run cordova` to build into the cordova/www folder.
 
 ## Build for firebase
 
