@@ -6,12 +6,12 @@ export const environment = {
   production: false,
   hmr: false,
   firebase: {
-    apiKey: "AIzaSyCr3uJX0ESpdqtJwFn_jYkNpiRyb0j1FC8",
-    authDomain: "testrefy.firebaseapp.com",
-    databaseURL: "https://testrefy.firebaseio.com",
-    projectId: 'testrefy',
-    storageBucket: "testrefy.appspot.com",
-    messagingSenderId: "842023912277"
+    apiKey: 'AIzaSyAxvwZBdYY9sT7hNXvn5OrZWAEKB8F2yV4',
+    authDomain: 'refyapp-1.firebaseapp.com',
+    databaseURL: 'https://refyapp-1.firebaseio.com',
+    projectId: 'refyapp-1',
+    storageBucket: 'refyapp-1.appspot.com',
+    messagingSenderId: '131391763636'
   }
 };
 

@@ -1,5 +1,5 @@
 <div class="refy-container">
-  <form class="form-group">
+  <form *ngIf="!authService.isLoggedIn" class="form-group">
     <div class="form-group">
       <mat-form-field>
         <label>Email address</label>
@@ -21,5 +21,5 @@
     </div>
     <button mat-raised-button color="primary" type="submit" (click)="tryLogin()" class="btn btn-default">Login</button>
   </form>
-  <button mat-raised-button (click)="tryLogout()">Logout</button>
+  <button *ngIf="authService.isLoggedIn" mat-raised-button (click)="tryLogout()">Logout</button>
 </div>

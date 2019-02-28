@@ -10,11 +10,12 @@
   >
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/goods-in" routerLinkActive="refy-link-active">Goods In</a>
-      <a mat-list-item routerLink="/goods-out" routerLinkActive="refy-link-active">Goods Out</a>
-      <a mat-list-item routerLink="/internal-relocation" routerLinkActive="refy-link-active">Internal Relocation</a>
+      <a *ngIf="authService.isLoggedIn" mat-list-item routerLink="/goods-in" routerLinkActive="refy-link-active">Goods In</a>
+      <a *ngIf="authService.isLoggedIn" mat-list-item routerLink="/goods-out" routerLinkActive="refy-link-active">Goods Out</a>
+      <a *ngIf="authService.isLoggedIn" mat-list-item routerLink="/internal-relocation" routerLinkActive="refy-link-active">Internal Relocation</a>
       <a mat-list-item routerLink="/inventory" routerLinkActive="refy-link-active">Inventory</a>
-      <a mat-list-item routerLink="/login" routerLinkActive="refy-link-active">Login</a>
+      <a *ngIf="!authService.isLoggedIn" mat-list-item routerLink="/login" routerLinkActive="refy-link-active">Login</a>
+      <a *ngIf="authService.isLoggedIn" mat-list-item routerLink="/login" routerLinkActive="refy-link-active">Logout</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
