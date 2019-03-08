@@ -15,6 +15,7 @@ import {AngularFirestore} from '@angular/fire/firestore';
 import {MatSnackBar} from '@angular/material';
 import {Warehouse} from '../../models/Warehouse';
 import {FormControl, Validators} from '@angular/forms';
+import {Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-options-selection',
@@ -31,6 +32,8 @@ export class OptionsSelectionComponent implements OnInit, DoCheck {
   box: Box;
   boxDiffer: KeyValueDiffer<string, any>;
   warehouses: Warehouse[];
+
+  @Output() boxSaved = new EventEmitter<void>();
 
   changes: boolean = false;
   custom: boolean = false;
@@ -106,5 +109,6 @@ export class OptionsSelectionComponent implements OnInit, DoCheck {
     this.box.location = this.box.column + '-' + this.box.row;
     await this.db.collection('box').doc(this.box.id).set({...this.box});
     this.snackBar.open('Box updated!', null, {duration: 2000});
+    this.boxSaved.emit();
   }
 }

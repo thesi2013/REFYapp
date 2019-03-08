@@ -42,4 +42,10 @@ export class GoodsInComponent implements OnInit {
     });
 
   }
+
+  boxSaved(event: any) {
+    // reset component
+    this.box = undefined;
+    this.scanning = true;
+  }
 }

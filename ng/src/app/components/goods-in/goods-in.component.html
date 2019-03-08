@@ -3,7 +3,7 @@
     <app-ssccscanner (scannedSscc)="getBoxBySscc($event)" ></app-ssccscanner>
   </div>
   <div *ngIf="!scanning">
-    <app-options-selection [box]=box></app-options-selection>
+    <app-options-selection [box]=box (boxSaved)="boxSaved($event)"></app-options-selection>
   </div>
 </div>
 

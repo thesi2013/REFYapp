@@ -65,6 +65,7 @@ export class SSCCScannerComponent implements OnInit {
     } else {
       this.snackBar.open('SSCC successfully scanned', null, {duration: 2000});
       this.scannedSscc.emit(resultString);
+      this.scannerEnabled = true;
     }
   }
 
