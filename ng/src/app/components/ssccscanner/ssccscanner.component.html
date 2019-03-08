@@ -2,9 +2,8 @@
   <div class="refy-sscc-scanner-container">
     <zxing-scanner
       #scanner
-      start="true"
       [device]="selectedDevice"
-      [scannerEnabled]="scannerEnabled"
+      [scannerEnabled]="true"
       (scanSuccess)="handleQrCodeScanResult($event)"
     ></zxing-scanner>
   </div>

@@ -52,6 +52,9 @@ export class SSCCScannerComponent implements OnInit {
   }
 
   handleQrCodeScanResult(resultString: string) {
+    if (!this.scannerEnabled) {
+      return;
+    }
     this.scannerEnabled = false;
     if (!SSCCScannerComponent.isStringSSCC(resultString)) {
       console.log(resultString);
