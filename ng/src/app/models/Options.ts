@@ -41,13 +41,13 @@ export class Options {
     }, {
       id: 'L',
       name: 'L',
-    },{
+    }, {
       id: 'teenager',
       name: '11-16Y (146-176)',
-    },{
+    }, {
       id: 'preteen',
       name: '5-10Y (110-140)',
-    },{
+    }, {
       id: 'child',
       name: '1-4Y (68-104)',
     }, {
@@ -101,7 +101,7 @@ export class Options {
     }, {
       id: 'hat',
       iconClass: 'icon-hat',
-    },{
+    }, {
       id: 'gloves',
       iconClass: 'icon-mat',
     }, {

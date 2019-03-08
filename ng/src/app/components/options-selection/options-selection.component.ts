@@ -1,4 +1,13 @@
-import {AfterViewInit, Component, DoCheck, Input, KeyValueDiffer, KeyValueDiffers, OnChanges, OnInit} from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  DoCheck,
+  Input,
+  KeyValueDiffer,
+  KeyValueDiffers,
+  OnChanges,
+  OnInit
+} from '@angular/core';
 import {Options} from '../../models/Options';
 import {Box} from '../../models/Box';
 import {ActivatedRoute} from '@angular/router';
@@ -52,9 +61,9 @@ export class OptionsSelectionComponent implements OnInit, DoCheck {
       if (difference) {
         console.log(this.box);
         this.changes = true;
-        if(this.box.items.includes('questionmark')){
+        if (this.box.items.includes('questionmark')) {
           this.custom = true;
-          if(this.box.custom === ''){
+          if (this.box.custom === '') {
             console.log(this.box.custom);
             this.changes = false;
           }
@@ -94,6 +103,7 @@ export class OptionsSelectionComponent implements OnInit, DoCheck {
 
   async save() {
     this.changes = false;
+    this.box.location = this.box.column + '-' + this.box.row;
     await this.db.collection('box').doc(this.box.id).set({...this.box});
     this.snackBar.open('Box updated!', null, {duration: 2000});
   }

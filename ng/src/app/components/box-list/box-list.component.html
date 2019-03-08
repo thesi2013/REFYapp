@@ -132,11 +132,11 @@
       <ng-container matColumnDef="sizes">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Sizes</th>
         <td mat-cell *matCellDef="let element">
-          {{element.sizes}}
+          {{findSizeById(element.sizes)}}
         </td>
       </ng-container>
 
-      <ng-container matColumnDef="delete">
+      <ng-container matColumnDef="delete" *ngIf="authService.isLoggedIn">
         <th mat-header-cell *matHeaderCellDef>Delete</th>
         <td mat-cell *matCellDef="let element">
           <mat-icon (click)="delete(element)" class="refy-edit">delete</mat-icon>

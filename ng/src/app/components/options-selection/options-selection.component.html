@@ -70,14 +70,14 @@
 
       <div>
         <mat-form-field class="refy-location">
-          <mat-select placeholder="Column" [(ngModel)]="column">
+          <mat-select placeholder="Column" [(ngModel)]="box.column">
             <mat-option *ngFor="let column of columns" [value]="column">
               {{column}}
             </mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field class="refy-location">
-          <mat-select placeholder="Row" [(ngModel)]="row">
+          <mat-select placeholder="Row" [(ngModel)]="box.row">
             <mat-option *ngFor="let row of rows" [value]="row">
               {{row}}
             </mat-option>
@@ -89,11 +89,7 @@
         <button mat-raised-button [disabled]="!changes" (click)="save()" color="primary">
           Save
         </button>
-        <button mat-raised-button [disabled]="changes" (click)="scanLabel()" color="secondary">
-          Quick Scan from Image
-        </button>
       </div>
-
     </div>
 
   </div>

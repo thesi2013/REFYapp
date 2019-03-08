@@ -41,7 +41,9 @@ export class InternalRelocationComponent implements OnInit {
 
     this.db.collection('rows').get().subscribe(res => {
       res.docs.forEach(doc => this.rows.push(doc.data().value as string));
-      this.rows.sort();
+      this.rows.sort((a, b) => {
+        return parseInt(a) - parseInt(b);
+      });
     });
 
     this.db.collection('columns').get().subscribe(res => {
@@ -97,7 +99,9 @@ export class InternalRelocationComponent implements OnInit {
     console.log(this.selectedDestination);
     this.marked.forEach(box => {
       box.warehouse = this.selectedDestination.name;
-      box.location = this.column + this.row;
+      box.column = this.column;
+      box.row = this.row;
+      box.location = this.column + '-' + this.row;
       this.db.collection('box').doc(box.id).set({...box});
     });
     this.snackBar.open('Boxes moved to ' + this.selectedDestination.name, null, { duration: 2000 });

@@ -8,6 +8,7 @@ import * as papa from 'papaparse';
 import {Warehouse} from '../../models/Warehouse';
 import {forEach} from '@angular/router/src/utils/collection';
 import {Search} from '../../models/Search';
+import {AuthService} from "../../services/auth.service";
 
 
 @Component({
@@ -34,7 +35,7 @@ export class BoxListComponent implements OnInit, AfterViewInit {
   rowSelection: string;
   search: Search = new Search();
 
-  displayedColumns: string[] = ['id', 'warehouse', 'location', 'weather', 'categories', 'items', 'sizes', 'delete'];
+  displayedColumns: string[];
 
   dataSource: MatTableDataSource<Box>;
 
@@ -45,8 +46,15 @@ export class BoxListComponent implements OnInit, AfterViewInit {
     private db: AngularFirestore,
     private router: Router,
     private route: ActivatedRoute,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    public authService: AuthService,
   ) {
+    if (authService.isLoggedIn) {
+      this.displayedColumns = ['id', 'warehouse', 'location', 'weather', 'categories', 'items', 'sizes', 'delete'];
+    } else {
+      this.displayedColumns = ['id', 'warehouse', 'location', 'weather', 'categories', 'items', 'sizes'];
+    }
+
     this.db.collection('box').get().subscribe(res => {
       this.length = res.size;
       this.dataSource = new MatTableDataSource(res.docs.map(el => el.data() as Box));
@@ -78,7 +86,7 @@ export class BoxListComponent implements OnInit, AfterViewInit {
   applyFilter() {
     this.dataSource.filterPredicate = this.customFilterPredicate();
     let searchString: string = '';
-    for (var key in this.search) {
+    for (let key in this.search) {
       searchString += this.search[key] + ',';
     }
     if (this.columnSelection && this.rowSelection) {
@@ -97,6 +105,10 @@ export class BoxListComponent implements OnInit, AfterViewInit {
 
   findItemIconById(id: string) {
     return this.itemOptions.find(obj => obj.id === id).iconClass;
+  }
+
+  findSizeById(ids: string[]) {
+    return ids.map(id => ' ' + this.sizeOptions.find(obj => obj.id === id).name);
   }
 
   async delete(box: Box) {

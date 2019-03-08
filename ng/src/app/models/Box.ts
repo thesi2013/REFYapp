@@ -11,6 +11,9 @@ export class Box {
 
   custom: string = '';
 
+  column: string;
+  row: string;
+
   warehouse: string;
   location: string;
 
